@@ -13,7 +13,7 @@ jobs:
       packages: write
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Log in to GitHub Container Registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
@@ -25,13 +25,12 @@ jobs:
         docker build \
           --tag ghcr.io/${{ github.repository }}:$BUILD_VERSION \
           --tag ghcr.io/${{ github.repository }}:latest \
-          --label "org.label-schema.schema-version=1.0" \
-          --label "org.label-schema.build-date=$BUILD_DATE" \
-          --label "org.label-schema.name=${{ github.repository }}" \
-          --label "org.label-schema.vcs-url=${{ github.server_url }}/${{ github.repository }}" \
-          --label "org.label-schema.vcs-ref=${{ github.sha }}" \
-          --label "org.label-schema.version=$BUILD_VERSION" \
+          --label "org.opencontainers.image.created=$BUILD_DATE" \
           --label "org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}" \
+          --label "org.opencontainers.image.version=$BUILD_VERSION" \
+          --label "org.opencontainers.image.revision=${{ github.sha }}" \
+          --label "org.opencontainers.image.title=ECS Anywhere Network Agent" \
+          --label "org.opencontainers.image.description=Helper agent for ECS Anywhere that detects containers running without the connected network and connects them to the network specified in the label." \
           --label "org.opencontainers.image.licenses=MIT" .
 
         docker push ghcr.io/${{ github.repository }} --all-tags
