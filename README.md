@@ -50,6 +50,10 @@ you must first create a task definition. Below is the task definition in JSON fo
 the latest version of **ECS Anywhere Network Agent**. After creating a task definition, run
 it as a service in ECS cluster with external instances.
 
+> For **ECS Anywhere Network Agent** to work properly, it must be running on each
+> instance, but no more than one per instance. To do this, when creating ECS service,
+> select the service scheduler strategy (service type) as DAEMON.
+
 ```JSON
 {
     "family": "ecs-anywhere-network-agent",
