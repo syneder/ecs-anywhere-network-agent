@@ -45,10 +45,10 @@ docker run -it --net=none --label ecs.network=custom_network nginx:latest
 ```
 
 ## Installation using Amazon ECS Console
-To run **ECS Anywhere Network Agent** on Amazon ECS Anywhere hosts, you must first create
-a task definition. Below is the task definition in JSON format to use the latest version
-of **ECS Anywhere Network Agent**. After creating a task definition, run it as a service
-in cluster with external instances.
+To run **ECS Anywhere Network Agent** on Amazon ECS Anywhere hosts using Amazon ECS Console,
+you must first create a task definition. Below is the task definition in JSON format to use
+the latest version of **ECS Anywhere Network Agent**. After creating a task definition, run
+it as a service in ECS cluster with external instances.
 
 ```JSON
 {
