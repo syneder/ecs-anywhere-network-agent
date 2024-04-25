@@ -30,7 +30,6 @@ jobs:
           --label "org.opencontainers.image.version=$BUILD_VERSION" \
           --label "org.opencontainers.image.revision=${{ github.sha }}" \
           --label "org.opencontainers.image.title=ECS Anywhere Network Agent" \
-          --label "org.opencontainers.image.description=Helper agent for ECS Anywhere that detects containers running without the connected network and connects them to the network specified in the label." \
           --label "org.opencontainers.image.licenses=MIT" .
 
         docker push ghcr.io/${{ github.repository }} --all-tags
