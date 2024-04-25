@@ -3,7 +3,7 @@ import os
 
 docker_client = docker.from_env()
 docker_network = docker_client.networks.get('none')
-container_label = os.environ.get('AGENT_NETWORK_CONTAINER_LABEL')
+container_label = os.environ.get('CONTAINER_NETWORK_LABEL')
 
 def connect_network(container, network):
     if 'none' in container.attrs['NetworkSettings']['Networks']:
