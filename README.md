@@ -85,6 +85,6 @@ it as a service in ECS cluster with external instances.
         }
     ],
     "cpu": "128",
-    "memory": "32"
+    "memory": "128"
 }
 ```
