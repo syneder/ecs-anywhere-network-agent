@@ -1,4 +1,5 @@
 # ECS Anywhere Network Agent
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/syneder/ecs-anywhere-network-agent/docker-image.yml)
 
 **ECS Anywhere Network Agent** is a simple agent for ECS Anywhere that automatically
 connects a container to the custom network specified in the container labels after
@@ -15,6 +16,7 @@ specified network to the container.
 - custom network must exist on the host
 - container must be connected to network none before starting
 
+> [!NOTE]
 > Custom networks can be created either before the agent starts or while the agent is
 > running. However, if the agent detects a container that, according to its labels, needs
 > to connect to a network that does not yet exist, it will throw an error and connect the
@@ -28,6 +30,7 @@ docker run -d --restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.s
   -e CONTAINER_NETWORK_LABEL=ecs.network ghcr.io/syneder/ecs-anywhere-network-agent:latest
 ```
 
+> [!WARNING]
 > If you start the **ECS Anywhere Network Agent** on a Docker host using the preceding
 > command, Amazon ECS Anywhere will not manage the running **ECS Anywhere Network Agent**
 > container. **ECS Anywhere Network Agent** container not managed by Amazon ECS Anywhere
@@ -50,6 +53,7 @@ you must first create a task definition. Below is the task definition in JSON fo
 the latest version of **ECS Anywhere Network Agent**. After creating a task definition, run
 it as a service in ECS cluster with external instances.
 
+> [!WARNING]
 > For **ECS Anywhere Network Agent** to work properly, it must be running on each
 > instance, but no more than one per instance. To do this, when creating ECS service,
 > select the service scheduler strategy (service type) as DAEMON.
